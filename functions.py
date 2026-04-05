@@ -1,7 +1,7 @@
 
 
-def say_hi():
-    print("я купил кота" + "1")
+# def say_hi():
+#     print("я купил кота" + "1")
 
 # print("я купил кота1")
 #
@@ -11,9 +11,22 @@ def say_hi():
 #
 # print("я купил кота4")
 
-say_hi()
+
+# index = 0
+# while index < 4:
+#     say_hi()
+#     # say_hi()
+#     # say_hi()
+#     # say_hi()
+#     index += 1
+
+def say_hi(number):
+    print("я купил кота" + str(number))
 
 
+say_hi(12)
+say_hi(1)
+say_hi(8)
 
 
 
