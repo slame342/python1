@@ -72,7 +72,11 @@ while while_continue:
     if index >= 30:
         # break
         while_continue = False
+
+
 print("#############################")
+
+
 # # практическое задание с циклами 1
 # list_2 = [input('введите число 1: '), input('введите число 2: ')]
 #
@@ -123,3 +127,19 @@ print("#############################")
 # for list_elem in list_6:
 #     if int(list_elem) % 2 != 0:
 #         print(str(list_elem) + ' ' + 'нечетное число')
+
+
+city_list = ["Almaty", "Astana", "Taraz", "Shymkent" ]
+
+var_str1 = "Almaty"
+var_str2 = "Taraz"
+print(f"{var_str1} {var_str2}")
+
+index_city = 0
+for city in city_list:
+    index_city = index_city + 1
+    # print(city + " " + str(city_list.index(city) + 1))
+    # string_city = f"{city} {index_city}"
+    # print(string_city)
+    print(f"{city} {index_city}")
+

@@ -19,5 +19,6 @@ while True:
         minutes = 0
         seconds = 0
         hours = 0
-    time.sleep(0.01)
+    time.sleep(1)
     print(f"{hours}:{minutes}:{seconds}")
+
