@@ -35,7 +35,7 @@ import tkinter
 import tkinter.ttk as ttk
 from threading import Thread
 
-result="something"
+# result="something"
 
 
 
@@ -45,18 +45,35 @@ seconds = 0
 
 pause = True
 
+# функция останавливает таймер
 def stop_timer():
        global pause
        pause = False
 
+#  функция обнулят таймер
+def reset_timer():
+       global pause
+       pause = True
+       global hours
+       hours = 0
+       global minutes
+       minutes = 0
+       global seconds
+       seconds = 0
+       seconds_label.config(text=f"{seconds}")
+       minutes_label.config(text=f"{minutes}")
+       hours_label.config(text=f"{hours}")
 
+
+
+# функция запускает таймер
 def start_timer():
        global pause
 
        pause = True
 
        global hours
-       # hours = 0
+       # hours = 0 # не обнуляя глобальные переменные таймер после пуска продолжает считать не обнуляясь
        global minutes
        # minutes = 0
        global seconds
@@ -82,12 +99,20 @@ def start_timer():
                      hours = 0
               # if minutes > 30:
               #        break
-
               time.sleep(0.001)
+
+              seconds_label.config(text=f"{seconds}")
+              minutes_label.config(text=f"{minutes}")
+              hours_label.config(text=f"{hours}")
               print(f"{hours}:{minutes}:{seconds}")
 
+# эта функция запускает новый поток для цикла
+# определение функции
 def start_new_thread():
     Thread(target=start_timer).start()
+
+# вызов функции
+# start_new_thread()
 
 # инициализация инстанса - создание объекта tkinter
 root = tkinter.Tk()
@@ -100,15 +125,24 @@ frm.grid()
 
 
 #часы
-ttk.Label(frm, text="00").grid(column=0, row=0)
+ttk.Label(frm, text="00")
+hours_label = ttk.Label(frm, text="00")
+hours_label.grid(column=0, row=0)
 # двоеточие
 ttk.Label(frm, text=":").grid(column=1, row=0)
 # минуты
-ttk.Label(frm, text="00").grid(column=2, row=0)
+ttk.Label(frm, text="00")
+minutes_label = ttk.Label(frm, text="00")
+minutes_label.grid(column=2, row=0)
 # двоеточие
 ttk.Label(frm, text=":").grid(column=3, row=0)
 # секунды
-ttk.Label(frm, text="00").grid(column=4, row=0)
+ttk.Label(frm, text="00")
+seconds_label = ttk.Label(frm, text="00")
+seconds_label.grid(column=4, row=0)
+
+
+
 
 # кнопка СТОП
 Button(text="stop",  # текст кнопки
@@ -120,6 +154,16 @@ Button(text="stop",  # текст кнопки
        # command=stop_timer,  # ОБЯЗАТЕЛЬНО ПЕРЕДАВАТЬ ССЫЛКУ НА ФУНКЦИЮ
        command=stop_timer
        ).grid(column=1, row=1)
+
+Button(text="reset",  # текст кнопки
+       background="#555",  # фоновый цвет кнопки
+       foreground="#ccc",  # цвет текста
+       padx="20",  # отступ от границ до содержимого по горизонтали
+       pady="8",  # отступ от границ до содержимого по вертикали
+       font="16",  # высота шрифта
+       # command=stop_timer,  # ОБЯЗАТЕЛЬНО ПЕРЕДАВАТЬ ССЫЛКУ НА ФУНКЦИЮ
+       command=reset_timer
+       ).grid(column=0, row=1)
 
 # кнопка СТОП
 Button(text="start",
@@ -143,11 +187,10 @@ Button(text="start",
 # ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=0)
 
 
-
 root.mainloop()
 
 
-# Thread(target=autoc).start()
+
 
 
 
