@@ -43,18 +43,28 @@ hours = 0
 minutes = 0
 seconds = 0
 
+pause = True
+
+def stop_timer():
+       global pause
+       pause = False
 
 
 def start_timer():
-       global hours
-       hours = 0
-       global minutes
-       minutes = 0
-       global seconds
-       seconds = 0
+       global pause
 
-       while minutes < 5:
+       pause = True
+
+       global hours
+       # hours = 0
+       global minutes
+       # minutes = 0
+       global seconds
+       # seconds = 0
+
+       # while minutes < 5:
        # while True:
+       while pause:
               # seconds = seconds + 1
               seconds += 1
 
@@ -108,6 +118,7 @@ Button(text="stop",  # текст кнопки
        pady="8",  # отступ от границ до содержимого по вертикали
        font="16",  # высота шрифта
        # command=stop_timer,  # ОБЯЗАТЕЛЬНО ПЕРЕДАВАТЬ ССЫЛКУ НА ФУНКЦИЮ
+       command=stop_timer
        ).grid(column=1, row=1)
 
 # кнопка СТОП
