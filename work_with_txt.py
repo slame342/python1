@@ -56,15 +56,31 @@ with open("src/dist/new_file.txt", "a") as file:
     # for city in var_list:
     #     file.write(f"{city}\n") # пишет в строки отдельно
     # file.writelines([f"{city}\n" for city in var_list])
-    newlist = []
+    new_list = []
     for city in var_list:
         newlist.append(f"{city}\n")
     # for city in var_list:
     #     file.write(f"{city}\n") # пишет в строки отдельно
     # file.writelines(newlist)
 
-    newlist = []
+    new_list = []
     for city in var_list:
         new_city =city + "\n"
         newlist.append(new_city)
-    file.writelines(newlist)
+    # file.writelines(new_list)
+
+
+text ="ShymkentShymkentShymkent"
+new_text = ""
+index = 0
+for char in text:
+    index = index + 1
+    new = index % 2
+    new_char = ""
+    if new == 0:
+        new_char = f"1{char} "
+        new_text += new_char
+print(new_text)
+
+new_list = [f"1{char} " for char in text if text.index(char) % 2 != 0]
+print("".join(new_list))
