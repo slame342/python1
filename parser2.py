@@ -2,11 +2,12 @@ import requests
 import json
 
 
-x = 'apples'
-y = 'lemons'
-z = 'In the basket are %s and %s' % (x, y)
-print(z)
-
+url = "https://jsonplaceholder.typicode.com/posts/4"
+response = requests.get(url)
+# http - ответ, content, данные, статус код = статус запроса
+print(response.status_code)
+content = response.content.decode()
+print(content)
 
 
 url = "https://jsonplaceholder.typicode.com/posts"
@@ -24,11 +25,11 @@ print(airlines[0:2])
 
 
 for airline in airlines[0:2]:
-    # with open(f"temp/data.{airline['id']}.json", 'w') as file:
-    #     json.dump(airline, file)
+    with open(f"temp/data.{airline['id']}.json", 'w') as file:
+        json.dump(airline, file)
     # with open("temp/data" + airline['id'] + '.json', 'w') as file:
     #     json.dump(airline, file)
-    with open("temp1/data_%s.json"  % airline['id'], 'w') as file:
+    # with open("temp1/data_%s.json"  % airline['id'], 'w') as file:
         json.dump(airline, file)
 #     # json.dumps()
 
